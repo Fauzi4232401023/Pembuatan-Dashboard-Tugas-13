@@ -125,7 +125,7 @@ with col2:
     total_revenue = format_currency(daily_orders_df.revenue.sum(), "AUD", locale='es_CO') 
     st.metric("Total Revenue", value=total_revenue)
  
-fig, ax = px.subplots(figsize=(16, 8))
+fig = px.line(figsize=(16, 8))
 ax.plot(
     daily_orders_df["order_date"],
     daily_orders_df["order_count"],
