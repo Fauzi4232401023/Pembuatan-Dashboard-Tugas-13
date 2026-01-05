@@ -125,14 +125,15 @@ with col2:
     total_revenue = format_currency(daily_orders_df.revenue.sum(), "AUD", locale='es_CO') 
     st.metric("Total Revenue", value=total_revenue)
  
-fig = px.line(figsize=(16, 8))
-ax.plot(
-    daily_orders_df["order_date"],
-    daily_orders_df["order_count"],
-    marker='o', 
-    linewidth=2,
-    color="#90CAF9"
+fig = px.line(
+    daily_orders_df,
+    x="order_date",
+    y="order_count",
+    markers=True,
+    title="Daily Orders"
 )
+
+st.plotly_chart(fig, use_container_width=True)
 ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
  
