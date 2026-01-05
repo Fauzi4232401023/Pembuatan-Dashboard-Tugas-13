@@ -124,15 +124,16 @@ with col1:
 with col2:
     total_revenue = format_currency(daily_orders_df.revenue.sum(), "AUD", locale='es_CO') 
     st.metric("Total Revenue", value=total_revenue)
- 
+
 fig = px.line(
-    daily_orders_df,
-    x="order_date",
-    y="order_count",
-    markers=True,
-    title="Daily Orders"
+    daily_orders_df,       # dataframe
+    x="order_date",        # kolom x
+    y="order_count",       # kolom y
+    markers=True,          # titik di setiap data
+    title="Daily Orders"   # judul chart
 )
 
+# tampilkan di Streamlit
 st.plotly_chart(fig, use_container_width=True)
 ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
