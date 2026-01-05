@@ -126,17 +126,20 @@ with col2:
     st.metric("Total Revenue", value=total_revenue)
 
 fig = px.line(
-    daily_orders_df,       # dataframe
-    x="order_date",        # kolom x
-    y="order_count",       # kolom y
-    markers=True,          # titik di setiap data
-    title="Daily Orders"   # judul chart
+    daily_orders_df,
+    x="order_date",
+    y="order_count",
+    markers=True,
+    title="Daily Orders"
 )
 
-# tampilkan di Streamlit
+# Atur ukuran font sumbu X dan Y
+fig.update_layout(
+    xaxis=dict(tickfont=dict(size=15)),
+    yaxis=dict(tickfont=dict(size=20))
+)
+
 st.plotly_chart(fig, use_container_width=True)
-ax.tick_params(axis='y', labelsize=20)
-ax.tick_params(axis='x', labelsize=15)
  
 st.pyplot(fig)
 
